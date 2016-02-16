@@ -1,0 +1,21 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <title><%=title%></title>
+    <%-stylesheets%>
+  </head>
+  <body>
+    <header>
+     <%-partial('header.ejs')%>
+    </header>
+
+    <section>
+      <%-body -%>
+    </section>
+
+    <footer>
+        <%-partial('footer.ejs')%>
+         <%-scripts%>
+    </footer>
+  </body>
+</html>

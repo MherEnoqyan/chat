@@ -1,0 +1,12 @@
+<div id="header">
+	<h1 id="welcome">WELCOME  NODE.JS</h1>
+	<div id="log_reg">
+		 <% if(typeof(sess) == "undefined"){%>
+			<a href="/sign_up">sign up</a>
+			<a href="/login">login</a>			
+		  <%}else{%>
+			 <a href="/logout">logout</a>
+		  <%}%>
+		  <div class="clear"></div>
+	</div>
+</div>

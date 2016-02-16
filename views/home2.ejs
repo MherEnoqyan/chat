@@ -1,0 +1,44 @@
+<% layout('layout') -%>
+
+
+<% stylesheet('../../public/css/style.css') -%>
+<% script('../../public/js/script.js') -%>
+
+<div id="block">
+	<ul></ul>
+	<form>
+		<input class="mes"/>
+	</form>
+</div>
+
+
+<script src="/socket.io/socket.io.js"></script>
+
+<script src="../../public/js/Jquery.js"></script>
+<script>
+$(document).ready(function(){
+	var socket = io.connect('');
+	
+	$('#block form').submit(function(){
+		var mes = $('.mes').val();
+		socket.emit('mes_s',  mes , function(data){
+			$('#block ul').append('<li>'+mes+'</li>');
+			console.log(data);    
+		});
+		return false;
+	});
+
+
+  
+  socket.on('mes_c', function (data) {
+	$('#block ul').append('<li>'+data+'</li>');
+    //console.log(data);    
+  });
+  
+  
+});
+ 
+
+</script>
+
+<h1>Welcome</h1>

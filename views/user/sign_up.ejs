@@ -1,0 +1,60 @@
+<% layout('../layout') -%>
+
+<% stylesheet('../../public/css/style.css') -%>
+<% script('../../public/js/script.js') -%>
+
+
+
+<form action="/sign_up" method="post">
+    <div>
+        <lable for="first_name">First name</label>
+        <input type="text" id="first_name" name="first_name" placeholder="First name" value="<% if(typeof(post) != "undefined"){ %><%=post.first_name%><%}%>" />
+
+        <% if(typeof(validation_errors) != "undefined" && typeof(validation_errors.first_name) != "undefined"){%>
+           <p class="valid_err"><%=validation_errors.first_name.msg%></p>
+        <%}%>
+    </div>
+
+    <div>
+        <lable for="last_name">Last name</label>
+        <input type="text" id="last_name" name="last_name" placeholder="Last name" value="<% if(typeof(post) != "undefined"){ %><%=post.last_name%><%}%>" />
+
+        <% if(typeof(validation_errors) != "undefined" && typeof(validation_errors.last_name) != "undefined"){%>
+           <p class="valid_err"><%=validation_errors.last_name.msg%></p>
+        <%}%>
+    </div>
+
+    <div>
+        <lable for="email">Email</label>
+        <input type="text" id="email" name="email" placeholder="Email" value="<% if(typeof(post) != "undefined"){ %><%=post.email%><%}%>" />
+
+        <% if(typeof(validation_errors) != "undefined" && typeof(validation_errors.email) != "undefined"){%>
+           <p class="valid_err"><%=validation_errors.email.msg%></p>
+        <%}%>
+    </div>
+
+    <div>
+        <lable for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Password" value="" />
+
+        <% if(typeof(validation_errors) != "undefined" && typeof(validation_errors.password) != "undefined"){%>
+           <p class="valid_err"><%=validation_errors.password.msg%></p>
+        <%}%>
+    </div>
+
+    <div>
+        <lable for="password2">Confirm password</label>
+        <input type="password" id="password2" name="password2" placeholder="Confirm password" value="" />
+
+        <% if(typeof(validation_errors) != "undefined" && typeof(validation_errors.password2) != "undefined"){%>
+           <p class="valid_err"><%=validation_errors.password2.msg%></p>
+        <%}%>
+    </div>
+
+    <div>
+        <input type="submit" value="Sign Up">
+    </div>
+
+</form>
+
+

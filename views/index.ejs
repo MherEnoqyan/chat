@@ -1,0 +1,17 @@
+<% layout('layout') -%>
+
+<% stylesheet('../css/style.css') -%>
+<% script('../js/script.js') -%>
+
+
+
+<div>
+ <%for(i=0;i<mess.length;i++){%>
+   <p><%=mess[i].mesage%></p>
+ <%}%>
+</div>
+<form action="" method="post">
+<textarea name="mesage"></textarea>
+<input type="submit" value="OK">
+
+</form>

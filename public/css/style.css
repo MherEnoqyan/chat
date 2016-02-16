@@ -1,0 +1,40 @@
+*{
+  padding:0px;
+  margin:0px; 
+}
+#header {
+	height:200px;
+	background:green;
+	position:relative;
+}
+#welcome {
+	margin:0px auto;
+	width:320px;
+	padding-top: 70px;	
+}
+#log_reg {
+	margin-top: 50px;		
+}
+#log_reg a {
+	margin-right: 25px;
+	font-size:25px;
+	text-decoration:none;
+	float:right;	
+}
+#log_reg a:hover {	
+	text-decoration:underline ;		
+}
+.clear{
+	clear:both;	
+}
+
+
+
+
+
+
+
+#footer {
+	height:200px;
+	background:green;
+}
