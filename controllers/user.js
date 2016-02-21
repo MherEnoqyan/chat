@@ -46,9 +46,10 @@ module.exports = function(db){
                 if (!err) {
                     console.log(rows, fields);
                     sess = req.session;
-                    sess.user = 'ooo';
+                    sess.user_name = req.body.first_name;
+                    sess.user_id = rows.insertId;
                     console.log("sess: ", sess);
-                    res.redirect('/');
+                    res.redirect('/chat');
                 } else {
                     console.log('Error while performing Query.');
                 }
@@ -64,39 +65,53 @@ module.exports = function(db){
     };
 
      login_post = function(req,res,next) {
-         var email = req.body.email;
-         var pass = md5(req.body.pass);
-
-         req.checkBody('email').isEmail();
-         req.body.aa='rrr';
-
-         req.check('testparam', 'Error Message').notEmpty().withMessage('Email is required').isInt();
-        // console.log(req.checkBody('email'));
-         req.checkBody("aa", "Enter a valid email address.").notEmpty().isInt();
-
-         var errors = req.validationErrors();
-         if (errors) {
-             res.send(errors);
-             return;
-         } else {
-
-             db.login(email, pass, function (err, rows, fields) {
+		
+        req.sanitize('email').trim();
+        req.sanitize('password').trim();        
+        var post = req.body;        
+        req.checkBody('email',"The Email field is required.").isEmail().withMessage("The Email field must contain a valid email address.").notEmpty();
+        req.checkBody('password',"The Password field is required.").notEmpty();      
+		
+		var validation_errors = req.validationErrors(true);
+        if (validation_errors) {
+            res.render('user/login', {
+                title: 'login',
+                post: post,
+                validation_errors: validation_errors
+            });
+       } else {
+			var email = req.body.email;
+			var password = md5(req.body.password);
+             db.login(email, password, function (err, rows, fields) {
                  if (!err) {
-                     console.log(rows, fields);
+					if(rows.length === 0){
+						res.render('user/login', {
+							title: 'login',
+							post: post,
+							error: 'Incorrect username or password.'
+						});
+					}
+                     console.log(rows);
                      sess = req.session;
-                     sess.user = 'ooo';
+                     sess.user_name = rows[0].first_name;
+					 sess.user_id = rows[0].id;
                      console.log("sess: ", sess);
-                     res.redirect('/');
+                     res.redirect('/chat');
                  } else {
                      console.log('Error while performing Query.');
                  }
              });
         }
+	 
+             
     };
 
     logout = function(req,res,next){
-        //sess.destroy();
-       delete sess.user;
+		sess = req.session;
+		console.log("sess1: ", sess);
+        sess.destroy();
+		console.log("sess2: ", sess);
+       //delete sess.user;
         res.redirect('/');
     };
 

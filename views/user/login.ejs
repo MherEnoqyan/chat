@@ -1,12 +1,39 @@
 <% layout('../layout') -%>
 
-<% stylesheet('../css/style.css') -%>
-<% script('../js/script.js') -%>
+<% stylesheet('../public/css/style.css') -%>
+<% script('../public/js/script.js') -%>
 
-
-
-<form action="/login" method="post">
-    <input type="text" name="email" placeholder="e_mail">
-    <input type="password" name="pass" placeholder="pass">
-    <input type="submit" value="Login">
-</form>
+<% if(typeof(error) != "undefined"){%>
+   <p class="error"><%=error%></p>
+<%}%>
+<div class="form">
+	<form action="/login" method="post">
+		
+		<div class="form-group row">
+			<label class=" col-sm-offset-4 col-sm-2 form-control-label" for="email">Email</label>
+			<div class="col-sm-4">
+				<input class="form-control" type="email" id="email" name="email" placeholder="Email" value="<% if(typeof(post) != "undefined"){ %><%=post.email%><%}%>" />
+			</div>
+			<% if(typeof(validation_errors) != "undefined" && typeof(validation_errors.email) != "undefined"){%>
+			   <p class="valid_err"><%=validation_errors.email.msg%></p>
+			<%}%>
+		</div>
+		
+		<div class="form-group row">
+			<label class=" col-sm-offset-4 col-sm-2 form-control-label" for="password">Password</label>
+			<div class="col-sm-4">
+				<input class="form-control" type="password" id="password" name="password" placeholder="Password" value="" />
+			</div>
+			<% if(typeof(validation_errors) != "undefined" && typeof(validation_errors.password) != "undefined"){%>
+			   <p class="valid_err"><%=validation_errors.password.msg%></p>
+			<%}%>
+		</div>
+		
+		<div class="form-group row">
+			<div class="col-sm-offset-6 col-sm-6">
+			  <button type="submit" class="btn btn-secondary">Login</button>
+			</div>        
+		</div>		
+		
+	</form>
+</div>

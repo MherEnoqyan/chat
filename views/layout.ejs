@@ -2,20 +2,25 @@
 <html>
   <head>
     <title><%=title%></title>
+	<link rel="stylesheet" href="../public/css/bootstrap.min.css">
     <%-stylesheets%>
   </head>
   <body>
-    <header>
-     <%-partial('header.ejs')%>
-    </header>
+	<div id="wrapper">
+		<header id="header">
+		 <%-partial('header.ejs')%>
+		</header>
 
-    <section>
-      <%-body -%>
-    </section>
-
-    <footer>
-        <%-partial('footer.ejs')%>
-         <%-scripts%>
+		<section>
+		  <%-body -%>
+		</section>
+		<div id="empty"></div>
+   </div>
+    <footer id="footer">
+        <%-partial('footer.ejs')%>         
     </footer>
+	<script src="../public/js/Jquery.js"></script>
+	<script src="../public/js/bootstrap.min.js"></script>
+	<%-scripts%>
   </body>
 </html>

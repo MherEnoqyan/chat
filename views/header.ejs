@@ -1,12 +1,11 @@
-<div id="header">
-	<h1 id="welcome">WELCOME  NODE.JS</h1>
-	<div id="log_reg">
-		 <% if(typeof(sess) == "undefined"){%>
-			<a href="/sign_up">sign up</a>
-			<a href="/login">login</a>			
-		  <%}else{%>
-			 <a href="/logout">logout</a>
-		  <%}%>
-		  <div class="clear"></div>
-	</div>
+<h1 id="welcome"> W E L C O M E  N O D E . J S </h1>
+<div id="log_reg">
+	 <% if(typeof(sess) === "undefined" || typeof(sess.user_id) === "undefined" ){%>
+		<a href="/sign_up">sign up</a>
+		<a href="/login">login</a>			
+	  <%}else{%>
+		 <span><%=sess.user_name%></span>
+		 <a href="/logout">logout</a>
+	  <%}%>
+	  <div class="clear"></div>
 </div>

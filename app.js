@@ -106,12 +106,20 @@ var sess;
 
 //conect  js , css
 
+app.get('/public/css/bootstrap.min.css',function(req,res,next){
+    res.sendfile('public/css/bootstrap.min.css');
+});
+
 app.get('/public/css/style.css',function(req,res,next){
     res.sendfile('public/css/style.css');
 });
 
 app.get('/public/js/Jquery.js',function(req,res,next){
 	res.sendfile('public/js/Jquery.js');
+});
+
+app.get('/public/js/bootstrap.min.js',function(req,res,next){
+	res.sendfile('public/js/bootstrap.min.js');
 });
 
 
@@ -163,7 +171,7 @@ app.get('/logout',logout);
 //});
 
 
-app.use('/aa',function(req,res,next){
+app.use('/chat',function(req,res,next){
 	
 	res.render('home2', {
 		title: 'home2'

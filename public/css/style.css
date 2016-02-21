@@ -2,18 +2,26 @@
   padding:0px;
   margin:0px; 
 }
+body{
+	min-width:600px;
+	height:100%;
+}
+#wrapper{
+	min-height:100%;
+}
 #header {
-	height:200px;
-	background:green;
+	height:150px;	
+	background: linear-gradient(to top, green, #CCFFD8);
 	position:relative;
 }
 #welcome {
 	margin:0px auto;
-	width:320px;
-	padding-top: 70px;	
+	width:475px;
+	padding-top: 40px;
+	color:red;
 }
 #log_reg {
-	margin-top: 50px;		
+	margin-top: 30px;		
 }
 #log_reg a {
 	margin-right: 25px;
@@ -27,14 +35,22 @@
 .clear{
 	clear:both;	
 }
-
-
-
-
-
-
-
+#anim_kod {
+	color:#fff;
+}
+.form{
+	margin-top: 34px;
+}
+#empty{
+	height:50px;
+}
 #footer {
-	height:200px;
-	background:green;
+	height:50px;	
+	background: linear-gradient(to top, green, #CCFFD8);
+	margin-top:-50px;
+}
+#footer  div{
+	margin:0 auto;
+	padding-top:18px;
+	width:100px;
 }
